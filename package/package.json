@@ -1,0 +1,69 @@
+{
+  "name": "@kleosr/pe2-cli",
+  "version": "3.3.7",
+  "description": "🚀 KleoSr PE²-CLI - Agentic prompt engineering with adaptive intelligence, multi-agent evaluation, and context-aware optimization",
+  "type": "module",
+  "main": "src/cli.js",
+  "bin": {
+    "pe2-cli": "src/cli.js",
+    "kleosr-pe2": "src/cli.js"
+  },
+  "scripts": {
+    "start": "node src/cli.js",
+    "test": "node src/cli.js --help",
+    "config": "node src/cli.js --config"
+  },
+  "keywords": [
+    "prompt-engineering",
+    "pe2",
+    "llm",
+    "openrouter",
+    "ai",
+    "prompt-optimization",
+    "cli",
+    "adaptive-intelligence",
+    "openai",
+    "anthropic",
+    "claude",
+    "gpt"
+  ],
+  "author": {
+    "name": "KleoSr",
+    "email": "kleosr@proton.me"
+  },
+  "license": "PROPRIETARY",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kleosr/pe2-cli.git"
+  },
+  "homepage": "https://github.com/kleosr/pe2-cli#readme",
+  "bugs": {
+    "url": "https://github.com/kleosr/pe2-cli/issues"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "src/",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "cli-highlight": "^2.1.11",
+    "cli-progress": "^3.12.0",
+    "cli-table3": "^0.6.3",
+    "clipboardy": "^4.0.0",
+    "commander": "^11.1.0",
+    "figlet": "^1.7.0",
+    "inquirer": "^9.2.12",
+    "keypress": "^0.2.1",
+    "openai": "^4.30.0",
+    "@anthropic-ai/sdk": "^0.55.1",
+    "@google/generative-ai": "^0.24.1"
+  }
+}
