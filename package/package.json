@@ -1,6 +1,6 @@
 {
   "name": "@kleosr/pe2-cli",
-  "version": "3.3.8",
+  "version": "3.4.1",
   "description": "🚀 KleoSr PE²-CLI - Agentic prompt engineering with adaptive intelligence, multi-agent evaluation, and context-aware optimization",
   "type": "module",
   "main": "src/cli.js",

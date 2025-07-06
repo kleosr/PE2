@@ -3,26 +3,12 @@
  * Provides access to multiple LLM providers through OpenRouter's unified API
  */
 
-import type { LLMClient, LLMCompletionOptions, LLMResponse } from '../../lib/llm.js';
-
-export interface OpenRouterClientOptions {
-    apiKey: string;
-    baseURL?: string;
-    customHeaders?: Record<string, string>;
-    httpReferer?: string;
-    xTitle?: string;
-}
-
 /**
  * OpenRouter client that implements the LLMClient interface
  * Uses OpenAI-compatible API format
  */
-export class OpenRouterClient implements LLMClient {
-    private apiKey: string;
-    private baseURL: string;
-    private headers: Record<string, string>;
-
-    constructor(options: OpenRouterClientOptions) {
+export class OpenRouterClient {
+    constructor(options) {
         if (!options.apiKey || typeof options.apiKey !== 'string') {
             throw new Error('OpenRouter API key is required and must be a non-empty string');
         }
@@ -38,9 +24,9 @@ export class OpenRouterClient implements LLMClient {
         };
     }
 
-    public chat = {
+    chat = {
         completions: {
-            create: async (options: LLMCompletionOptions): Promise<LLMResponse> => {
+            create: async (options) => {
                 // Validate required parameters
                 if (!options.model || typeof options.model !== 'string') {
                     throw new Error('OpenRouter model parameter is required and must be a string');
@@ -93,10 +79,10 @@ export class OpenRouterClient implements LLMClient {
                     }
 
                     return {
-                        choices: data.choices.map((choice: any) => ({
+                        choices: data.choices.map((choice) => ({
                             message: {
                                 content: choice.message?.content || '',
-                                role: 'assistant' as const
+                                role: 'assistant'
                             },
                             finish_reason: choice.finish_reason || 'stop'
                         })),
@@ -122,7 +108,7 @@ export class OpenRouterClient implements LLMClient {
     /**
      * Handle error responses from OpenRouter API
      */
-    private async handleErrorResponse(response: Response): Promise<never> {
+    async handleErrorResponse(response) {
         let errorMessage = 'OpenRouter API error';
         
         try {
@@ -167,7 +153,7 @@ export class OpenRouterClient implements LLMClient {
     /**
      * Get available models from OpenRouter
      */
-    async getModels(): Promise<any[]> {
+    async getModels() {
         try {
             const response = await fetch(`${this.baseURL}/models`, {
                 headers: {
@@ -191,7 +177,7 @@ export class OpenRouterClient implements LLMClient {
     /**
      * Get account information
      */
-    async getAccount(): Promise<any> {
+    async getAccount() {
         try {
             const response = await fetch(`${this.baseURL}/auth/key`, {
                 headers: {
@@ -215,16 +201,16 @@ export class OpenRouterClient implements LLMClient {
 /**
  * Factory function to create OpenRouter client
  */
-export function createOpenRouterClient(options: OpenRouterClientOptions): OpenRouterClient {
+export function createOpenRouterClient(options) {
     return new OpenRouterClient(options);
 }
 
 /**
  * Helper function for backward compatibility with existing code
  */
-export function createOpenAICompatibleClient(apiKey: string, baseURL?: string): LLMClient {
+export function createOpenAICompatibleClient(apiKey, baseURL) {
     return new OpenRouterClient({
         apiKey,
         baseURL: baseURL || 'https://openrouter.ai/api/v1'
     });
-}
+} 
