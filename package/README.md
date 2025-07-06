@@ -1,5 +1,7 @@
 # KleoSr PE²-CLI — Adaptive Intelligence for Prompt Engineering
 
+![PE2-CLI Screenshot](https://i.ibb.co/995W1820/image.png)
+
 Transform raw prompts into **PE²-optimised** prompts that maximise LLM performance using adaptive intelligence and automated complexity analysis.
 
 | Requirement | Version |

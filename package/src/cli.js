@@ -26,7 +26,7 @@ import { createOpenAIClient } from './providers/openai/client.js';
 import { createAnthropicClient } from './providers/anthropic/client.js';
 import { createGoogleClient } from './providers/google/client.js';
 import { createOllamaClient } from './providers/ollama/client.js';
-import { createOpenRouterClient } from './providers/openrouter/client.ts';
+import { createOpenRouterClient } from './providers/openrouter/client.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
